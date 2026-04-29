@@ -1,0 +1,26 @@
+<section class="products-page">
+  <header>
+    <h1>CRUD de Productos</h1>
+    <p>Flujo hexagonal: componente -> use case -> port -> adapter -> API.</p>
+  </header>
+
+  <section class="content-grid">
+    <app-product-form
+      [value]="draft()"
+      [mode]="mode()"
+      [submitting]="submitting()"
+      (formSubmit)="submit($event)"
+      (cancel)="cancelEdit()"
+    />
+
+    <app-product-list
+      [products]="sortedProducts()"
+      [loading]="loading()"
+      [deletingId]="deletingId()"
+      [errorMessage]="errorMessage()"
+      (refresh)="loadProducts()"
+      (edit)="edit($event)"
+      (remove)="remove($event)"
+    />
+  </section>
+</section>

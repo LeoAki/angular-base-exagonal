@@ -1,0 +1,66 @@
+<article class="panel">
+  <h2>{{ mode() === 'create' ? 'Nuevo producto' : 'Editar producto' }}</h2>
+
+  <form novalidate (submit)="onSubmit($event)" class="product-form">
+    <label>
+      Nombre
+      <input
+        type="text"
+        [formField]="productForm.name"
+        [class.invalid]="showError(productForm.name)"
+        placeholder="Ej: Mochila urbana"
+      />
+    </label>
+    @if (showError(productForm.name)) {
+      <small class="field-error">{{ errorMessage(productForm.name) }}</small>
+    }
+
+    <label>
+      Precio
+      <input
+        type="number"
+        [formField]="productForm.price"
+        [class.invalid]="showError(productForm.price)"
+        step="0.01"
+      />
+    </label>
+    @if (showError(productForm.price)) {
+      <small class="field-error">{{ errorMessage(productForm.price) }}</small>
+    }
+
+    <label>
+      Descripción
+      <textarea
+        [formField]="productForm.description"
+        [class.invalid]="showError(productForm.description)"
+        rows="4"
+      ></textarea>
+    </label>
+    @if (showError(productForm.description)) {
+      <small class="field-error">{{ errorMessage(productForm.description) }}</small>
+    }
+
+    <label>
+      URL de imagen
+      <input
+        type="url"
+        [formField]="productForm.image"
+        [class.invalid]="showError(productForm.image)"
+        placeholder="https://..."
+      />
+    </label>
+    @if (showError(productForm.image)) {
+      <small class="field-error">{{ errorMessage(productForm.image) }}</small>
+    }
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="submitting() || productForm().submitting()">
+        {{ submitting() ? 'Guardando...' : mode() === 'create' ? 'Crear' : 'Actualizar' }}
+      </button>
+
+      @if (mode() === 'edit') {
+        <button type="button" class="secondary" (click)="onCancel()">Cancelar</button>
+      }
+    </div>
+  </form>
+</article>

@@ -1,0 +1,74 @@
+.panel {
+  background: #ffffffcc;
+  backdrop-filter: blur(2px);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.product-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  background: #fff;
+}
+
+input.invalid,
+textarea.invalid {
+  border-color: #b91c1c;
+  background: #fff5f5;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.field-error {
+  color: #b91c1c;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: -0.2rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  background: #ea580c;
+  color: #fff;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.secondary {
+  background: #334155;
+}

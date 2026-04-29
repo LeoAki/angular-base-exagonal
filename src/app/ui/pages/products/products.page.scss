@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+  background: radial-gradient(circle at top, #fef5e7, #f8fafc 45%);
+  color: #111827;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+.products-page {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2rem 1rem 3rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 2vw + 1rem, 2.5rem);
+}
+
+header p {
+  margin-top: 0.35rem;
+  color: #374151;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 960px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}

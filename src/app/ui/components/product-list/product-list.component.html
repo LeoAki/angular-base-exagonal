@@ -1,0 +1,42 @@
+<article class="panel">
+  <div class="list-header">
+    <h2>Listado</h2>
+    <button type="button" class="secondary" (click)="onRefresh()" [disabled]="loading()">
+      {{ loading() ? 'Cargando...' : 'Refrescar' }}
+    </button>
+  </div>
+
+  @if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+  }
+
+  @if (loading()) {
+    <p>Cargando productos...</p>
+  } @else if (products().length === 0) {
+    <p>No hay productos disponibles.</p>
+  } @else {
+    <ul class="product-list">
+      @for (product of products(); track product.id) {
+        <li class="product-item">
+          <img [src]="product.image" [alt]="product.name" />
+          <div>
+            <h3>#{{ product.id }} - {{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <strong>{{ product.price | currency: 'USD' }}</strong>
+          </div>
+          <div class="item-actions">
+            <button type="button" class="secondary" (click)="onEdit(product.id)">Editar</button>
+            <button
+              type="button"
+              class="danger"
+              [disabled]="deletingId() === product.id"
+              (click)="onRemove(product.id)"
+            >
+              {{ deletingId() === product.id ? 'Eliminando...' : 'Eliminar' }}
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</article>
